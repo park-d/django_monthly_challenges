@@ -1,52 +1,17 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseNotFound
 
 # Create your views here.
 
 
-def january(request):
-    return HttpResponse("january goal!")
-
-
-def february(request):
-    return HttpResponse("february goal!")
-
-
-def march(request):
-    return HttpResponse("march goal!")
-
-
-def april(request):
-    return HttpResponse("april goal!")
-
-
-def may(request):
-    return HttpResponse("may goal!")
-
-
-def june(request):
-    return HttpResponse("june goal!")
-
-
-def july(request):
-    return HttpResponse("july goal!")
-
-
-def august(request):
-    return HttpResponse("august goal!")
-
-
-def september(request):
-    return HttpResponse("september goal!")
-
-
-def october(request):
-    return HttpResponse("october goal!")
-
-
-def november(request):
-    return HttpResponse("november goal!")
-
-
-def december(request):
-    return HttpResponse("december goal!")
+def monthly_challenge(request, month):
+    challenge_text = None
+    if month == 'january':
+        challenge_text = "january goal!"
+    elif month == 'february':
+        challenge_text = "february goal!"
+    elif month == 'march':
+        challenge_text = "march goal!"
+    else:
+        return HttpResponseNotFound("This month isn't supported yet.")
+    return HttpResponse(challenge_text)
